@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+   <p> Are you really delete  "{{course.name}}" ?</p>
+    <a href="{% url 'courses' %}">Go back</a> 
+    <input type="submit" value="Yes">
+</form>
+
+{% endblock content %}
+

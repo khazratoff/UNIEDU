@@ -1,0 +1,75 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIEDU</title>
+</head>
+<body>
+    {% extends 'main.html' %}
+    {% block content %}
+      <!-- Main Section -->
+  <main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box">
+          <h2>Search for <span>Courses</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form id="searchForm" class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Courses </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                value="{{searchQuery}}" placeholder="Search by Course Title" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+        {% for course in courses %}
+
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'course' course.id %}" class="project">
+                <img class="project__thumbnail" src="{{course.featured_image.url}}" alt="project thumbnail" />
+                <div class="card__body">
+                  <h3 class="project__title">{{course.name}}</h3>
+                  {% if course.owner.id %}
+                  <p><a class="project__author" href="{% url 'profile' course.owner.id %}">{{course.owner.name}}</a></p>
+                  {% endif %}
+                  <p class="project--rating">
+                    <span style="font-weight: bold;"></span>{{course.date_created}}
+                  </p>
+                  <div class="project__tags">
+                    {% for tag in course.tags.all %}
+                    <span class="tag tag--pill tag--main">
+                      <small>{{tag}}</small>
+                    </span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+ {% include 'pagination.html' with queryset=courses custom_range=custom_range %}
+  </main>
+
+
+    {% endblock content %}
+    <hr>
+
+</body>
+</html>
