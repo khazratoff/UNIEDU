@@ -17,8 +17,11 @@
                   <a title="More" href="{{profile.link}}" target="_blank"><i class="im im-github"></i></a>
                 </li>
                 {% endif %}
+                {% if profile.id == request.user.profile.id %}
                 
+                {% else %}
               <a href="{% url 'create-message' profile.id %}" class="btn btn--sub btn--lg">Send Message </a>
+                {% endif %}
             </div>
           </div>
         </div>
