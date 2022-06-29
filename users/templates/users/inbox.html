@@ -12,7 +12,11 @@
         <li class="message">
         {% endif %}
           <a href="{% url 'message' message.id %}">
+            {% if message.sender.name %}
             <span class="message__author">{{message.sender.name}}</span>
+            {% else %}
+            <p style="color:red ;">Deleted account</p>
+            {% endif %}
             <span class="message__subject">{{message.subject}}</span>
             <span class="message__date">{{message.date_created}}</span>
           </a>
