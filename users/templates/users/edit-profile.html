@@ -14,7 +14,11 @@
                 <div class="form__field">
 
                     {% for field in form %}
+                    {% if field.label == 'Short intro' %}
+                    <label for="formInput#text">Describe yourself in short</label>
+                    {% else %}
                     <label for="formInput#text">{{field.label}}</label>
+                    {% endif %}
                     {{field}}
                     {% endfor %}
                 </div>

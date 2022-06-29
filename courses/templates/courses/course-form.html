@@ -4,13 +4,23 @@
 <main class="formPage my-xl">
     <div class="content-box">
         <div class="formWrapper">
-            <a class="backButton" href="{% url 'courses' %}"><i class="im im-angle-left"></i></a>
+            <a class="backButton" href="{% url 'account' %}"><i class="im im-angle-left"></i></a>
             <br>
 
             <form class="form" method="POST" enctype="multipart/form-data">
                 
                 <!-- Input:Text -->
-                {{form}}
+                {% for field in form %}
+                {% csrf_token %}
+                <div class="form__field">
+                    {% if field.label == 'Tags' %}
+                    <label for="formInput#text">What do you think the level(difficulty) of your course would be like:</label>
+                    {% else %}
+                    <label for="formInput#text">{{field.label}}</label>
+                    {% endif %}
+                    {{field}}
+                </div>
+                {% endfor %}
 
                 <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
             </form>

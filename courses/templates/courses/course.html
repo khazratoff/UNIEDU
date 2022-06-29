@@ -32,7 +32,11 @@
           {% if course.owner.id == request.user.profile.id %}
           <a href="{% url 'account' %}" class="singleProject__developer">{{course.owner.name}}</a>
           {% else %}
+            {% if course.owner.id %}
           <a href="{% url 'profile' course.owner.id %}" class="singleProject__developer">{{course.owner.name}}</a>
+            {% else %}
+            <p style="color:red ;">Owner of this course is not avaliable anymore</p>
+            {% endif %}
           {% endif %}
           <h2 class="singleProject__title">{{course.name}}</h2>
           <h3 class="singleProject__subtitle">About the Course</h3>

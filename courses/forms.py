@@ -14,10 +14,7 @@ class CourseForm(ModelForm):
             'link',
             'tags',
         ]
-        label={
-            'name':'Full Name',
-            'tags':'What do you think the level(difficulty) of your course would be like'
-        }
+
         widgets={
             'tags':forms.CheckboxSelectMultiple()
         }
