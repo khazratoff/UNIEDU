@@ -39,7 +39,7 @@
           <div class="column">
             <div class="card project">
               <a href="{% url 'course' course.id %}" class="project">
-                <img class="project__thumbnail" src="{{course.featured_image.url}}" alt="project thumbnail" />
+                <img class="project__thumbnail" src="{{course.ImageURL}}" alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{course.name}}</h3>
                   {% if course.owner.id %}

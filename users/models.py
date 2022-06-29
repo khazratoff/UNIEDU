@@ -25,6 +25,15 @@ class Profile(m.Model):
 
     def __str__(self):
         return str(self.username)
+    class Meta:
+        ordering=['date_created']
+    @property
+    def PimageURL(self):
+        try:
+            url=self.profile_image.url
+        except:
+            url=None
+        return url
 
 
 class Skill(m.Model):

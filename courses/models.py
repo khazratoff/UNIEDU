@@ -21,6 +21,15 @@ class Courses(m.Model):
         ordering=['date_created']
 
     @property
+    def ImageURL(self):
+        try:
+            url=self.featured_image.url
+        except:
+            url=None
+        return url
+
+
+    @property
     def commentors(self):
         queryset=self.comments_set.all().values_list('owner__id',flat=True)
         return queryset
