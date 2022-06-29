@@ -10,13 +10,7 @@
             <form class="form" method="POST" enctype="multipart/form-data">
                 
                 <!-- Input:Text -->
-                {% for field in form %}
-                {% csrf_token %}
-                <div class="form__field">
-                    <label for="formInput#text">{{field.label}}</label>
-                    {{field}}
-                </div>
-                {% endfor %}
+                {{form}}
 
                 <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
             </form>
