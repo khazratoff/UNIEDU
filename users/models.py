@@ -1,14 +1,8 @@
-from contextlib import nullcontext
-from distutils.command.upload import upload
-from distutils.text_file import TextFile
-from hashlib import blake2b
-from pydoc import describe
-from re import T
-from telnetlib import Telnet
 from django.db import models as m
 from django.contrib.auth.models import User
 import uuid
-# Create your models here.
+
+
 class Profile(m.Model):
     user=m.OneToOneField(User,null=True,blank=True,on_delete=m.CASCADE)
     username=m.CharField(max_length=200,null=True,blank=True)
