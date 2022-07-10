@@ -4,7 +4,7 @@
 <form action="" method="POST">
     {% csrf_token %}
    <p> Are you really delete  "{{course.name}}" ?</p>
-    <a href="{% url 'courses' %}">Go back</a> 
+    <a href="{% url 'account' %}">Go back</a> 
     <input type="submit" value="Yes">
 </form>
 
